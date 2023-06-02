@@ -111,8 +111,7 @@ export function SignUpForm() {
       <Button
         type="submit"
         colorScheme="green"
-        isLoading={isSubmitting}
-        disabled={isSubmitSuccessful}>
+        isLoading={isSubmitting || isSubmitSuccessful}>
         Sign Up
       </Button>
     </Box>

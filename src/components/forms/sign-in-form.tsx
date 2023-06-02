@@ -87,9 +87,8 @@ export function SignInForm() {
       <Button
         type="submit"
         colorScheme="green"
-        isLoading={isSubmitting}
-        rightIcon={<MdLogin />}
-        disabled={isSubmitSuccessful}>
+        isLoading={isSubmitting || isSubmitSuccessful}
+        rightIcon={<MdLogin />}>
         Sign In
       </Button>
     </Box>
