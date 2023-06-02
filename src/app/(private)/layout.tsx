@@ -1,3 +1,4 @@
+import { PrivateAuth } from '@/app/(private)/private-auth'
 import { PrivateLayoutClient } from '@/app/(private)/private-layout-client'
 import { ReactNode } from 'react'
 
@@ -6,5 +7,9 @@ export interface PublicLayoutProps {
 }
 
 export default function PrivateLayout({ children }: PublicLayoutProps) {
-  return <PrivateLayoutClient>{children}</PrivateLayoutClient>
+  return (
+    <PrivateAuth>
+      <PrivateLayoutClient>{children}</PrivateLayoutClient>
+    </PrivateAuth>
+  )
 }

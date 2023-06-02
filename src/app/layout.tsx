@@ -1,5 +1,4 @@
 import { Providers } from '@/app/providers'
-import { Navbar } from '@/layout/navbar'
 
 export const metadata = {
   title: 'Appointment Management System',
@@ -14,10 +13,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>
-          <Navbar />
-          {children}
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

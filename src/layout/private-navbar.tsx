@@ -1,12 +1,22 @@
 'use client'
 
-import { Box, Container, Flex, Text } from '@chakra-ui/react'
+import { Badge, Box, Container, Flex, Text } from '@chakra-ui/react'
 import { ImLeaf } from 'react-icons/im'
 
 import { UserMenu } from '@/components/user-menu/user-menu'
+import { api } from '@/services/api'
 import { Link } from '@chakra-ui/next-js'
+import { useQuery } from '@tanstack/react-query'
 
-export function Navbar() {
+export function PrivateNavbar() {
+  const { data } = useQuery({
+    queryKey: ['users', 'current_user'],
+    queryFn: async () => {
+      const res = await api.get('/users/me')
+      return res.data
+    },
+  })
+
   return (
     <Box borderBottom="1px" borderColor="gray.400">
       <Container maxW="container.xl">
@@ -29,6 +39,17 @@ export function Navbar() {
               MS
             </Text>
           </Link>
+          <Box display={{ base: 'none', md: 'block' }}>
+            {data.type === 'PATIENT' && (
+              <Badge colorScheme="green">{data.type}</Badge>
+            )}
+            {data.type === 'DOCTOR' && (
+              <Badge colorScheme="purple">{data.type}</Badge>
+            )}
+            {data.type === 'ADMIN' && (
+              <Badge colorScheme="red">{data.type}</Badge>
+            )}
+          </Box>
           <UserMenu />
         </Flex>
       </Container>

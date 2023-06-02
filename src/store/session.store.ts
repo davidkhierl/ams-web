@@ -2,10 +2,11 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
 export interface SessionStore {
-  access_token?: string
-  refresh_token?: string
+  access_token?: string | null
+  refresh_token?: string | null
   setAccessToken: (access_token: string) => void
   setRefreshToken: (refresh_token: string) => void
+  clearSession: () => void
 }
 
 export const useSessionStore = create<SessionStore>()(
@@ -16,6 +17,9 @@ export const useSessionStore = create<SessionStore>()(
       },
       setRefreshToken(refresh_token) {
         set({ refresh_token })
+      },
+      clearSession() {
+        set({ access_token: null, refresh_token: null })
       },
     }),
     { name: 'session-store' }

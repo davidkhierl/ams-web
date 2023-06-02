@@ -1,35 +1,50 @@
 'use client'
 
-import { Link } from '@chakra-ui/next-js'
-import { Button, IconButton } from '@chakra-ui/react'
-import { usePathname } from 'next/navigation'
-import { HiOutlineHome } from 'react-icons/hi'
-import { MdLogin } from 'react-icons/md'
+import { api } from '@/services/api'
+import { useSessionStore } from '@/store/session.store'
+import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useRouter } from 'next/navigation'
+import { MouseEventHandler } from 'react'
+import { FaChevronDown } from 'react-icons/fa'
+import { MdLogout } from 'react-icons/md'
 export function UserMenu() {
-  const pathname = usePathname()
+  const clearSession = useSessionStore((state) => state.clearSession)
 
-  if (pathname === '/signin')
-    return (
-      <IconButton
-        as={Link}
-        href="/"
-        title="Go back to home page"
-        variant="outline"
-        colorScheme="green"
-        icon={<HiOutlineHome />}
-        aria-label="Go back to home page"
-      />
-    )
+  const { push } = useRouter()
+
+  const { data } = useQuery({
+    queryKey: ['users', 'current_user'],
+    queryFn: async () => {
+      const res = await api.get('/users/me')
+      return res.data
+    },
+  })
+
+  const queryClient = useQueryClient()
+
+  const handleLogoutButtonOnClick: MouseEventHandler<
+    HTMLButtonElement
+  > = () => {
+    queryClient.clear()
+    clearSession()
+    push('/signin')
+  }
 
   return (
-    <Button
-      as={Link}
-      href="/signin"
-      title="Sign in"
-      variant="outline"
-      colorScheme="green"
-      rightIcon={<MdLogin />}>
-      Sign In
-    </Button>
+    <Menu>
+      <MenuButton
+        as={Button}
+        rightIcon={<FaChevronDown />}
+        variant="outline"
+        colorScheme="green">
+        {data.name}
+      </MenuButton>
+      <MenuList>
+        <MenuItem icon={<MdLogout />} onClick={handleLogoutButtonOnClick}>
+          Logout
+        </MenuItem>
+      </MenuList>
+    </Menu>
   )
 }
