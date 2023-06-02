@@ -10,7 +10,7 @@ This Project uses pnpm as package manager
 
 Second install and run the development server:
 
-## Note: All CRUD operation are available with the direct call to the api, since I don't have enough time to implement on the UI.
+## Note: All CRUD operations are available with the direct call to the api since I don't have enough time to implement it on the UI.
 
 ```bash
 pnpm install
