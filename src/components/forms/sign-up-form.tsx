@@ -37,7 +37,7 @@ export function SignUpForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors, isSubmitting },
     setError,
   } = useForm<SignUpFormInputs>({
     resolver: zodResolver(schema),
@@ -108,10 +108,7 @@ export function SignUpForm() {
         {...register('password')}
         error={errors.password?.message}
       />
-      <Button
-        type="submit"
-        colorScheme="green"
-        isLoading={isSubmitting || isSubmitSuccessful}>
+      <Button type="submit" colorScheme="green" isLoading={isSubmitting}>
         Sign Up
       </Button>
     </Box>

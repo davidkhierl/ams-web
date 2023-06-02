@@ -32,7 +32,7 @@ export function SignInForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors, isSubmitting },
   } = useForm<SignInFormInputs>({
     resolver: zodResolver(schema),
   })
@@ -87,7 +87,7 @@ export function SignInForm() {
       <Button
         type="submit"
         colorScheme="green"
-        isLoading={isSubmitting || isSubmitSuccessful}
+        isLoading={isSubmitting}
         rightIcon={<MdLogin />}>
         Sign In
       </Button>
