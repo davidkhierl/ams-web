@@ -1,12 +1,30 @@
+import omit from 'lodash-es/omit'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
 export interface SessionStore {
-  access_token?: string | null
-  refresh_token?: string | null
+  /**
+   * Access token
+   */
+  access_token?: string
+  /**
+   * Refresh token
+   */
+  refresh_token?: string
+  /**
+   * Set access token
+   * @param access_token {string}
+   */
   setAccessToken: (access_token: string) => void
+  /**
+   * Set refresh token
+   * @param refresh_token {string}
+   */
   setRefreshToken: (refresh_token: string) => void
-  clearSession: () => void
+  /**
+   * Clear tokens
+   */
+  clearSessionTokens: () => void
 }
 
 export const useSessionStore = create<SessionStore>()(
@@ -18,9 +36,8 @@ export const useSessionStore = create<SessionStore>()(
       setRefreshToken(refresh_token) {
         set({ refresh_token })
       },
-      clearSession() {
-        set({ access_token: null, refresh_token: null })
-      },
+      clearSessionTokens: () =>
+        set((state) => omit(state, ['access_token', 'refresh_token']), true),
     }),
     { name: 'session-store' }
   )
