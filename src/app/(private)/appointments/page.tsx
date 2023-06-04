@@ -1,7 +1,7 @@
 'use client'
 
 import { AppointmentsGrid } from '@/app/(private)/appointments/appointments-grid'
-import { api } from '@/services/api'
+import { api } from '@/lib/api'
 import { useCreateAppointmentDrawerStore } from '@/store/create-appointment-drawer.store'
 import { Box, Button, Flex, Heading } from '@chakra-ui/react'
 import { useQuery } from '@tanstack/react-query'

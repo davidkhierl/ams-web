@@ -1,17 +1,19 @@
 'use client'
 
-import { PublicNavbar } from '@/layout/public-navbar'
+import { AppBarPublicOnly } from '@/layout/app-bar-public-only'
 import { Container } from '@chakra-ui/react'
 import { ReactNode } from 'react'
 
-export interface PublicLayoutClientProps {
+export interface PublicOnlyLayoutClientProps {
   children?: ReactNode
 }
 
-export function PublicLayoutClient({ children }: PublicLayoutClientProps) {
+export function PublicOnlyLayoutClient({
+  children,
+}: PublicOnlyLayoutClientProps) {
   return (
     <>
-      <PublicNavbar />
+      <AppBarPublicOnly />
       <Container maxW="container.xl" mt={10}>
         {children}
       </Container>

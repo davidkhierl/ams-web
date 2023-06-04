@@ -2,7 +2,7 @@
 
 import { AppointmentCard } from '@/app/(private)/appointments/appointment-card'
 import { AppointmentsCardSkeleton } from '@/app/(private)/appointments/appointments-card-skeleton'
-import { api } from '@/services/api'
+import { api } from '@/lib/api'
 import { Box, Flex, SimpleGrid, Text } from '@chakra-ui/react'
 import { useQuery } from '@tanstack/react-query'
 

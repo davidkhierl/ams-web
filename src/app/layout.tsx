@@ -1,4 +1,4 @@
-import { Providers } from '@/app/providers'
+import { AppProvider } from '@/app/app-provider'
 
 export const metadata = {
   title: 'Appointment Management System',
@@ -13,7 +13,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>{children}</Providers>
+        <AppProvider>{children}</AppProvider>
       </body>
     </html>
   )

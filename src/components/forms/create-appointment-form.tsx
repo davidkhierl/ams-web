@@ -1,5 +1,5 @@
 import { DoctorSelect } from '@/components/doctor-select'
-import { api } from '@/services/api'
+import { api } from '@/lib/api'
 import { useCreateAppointmentDrawerStore } from '@/store/create-appointment-drawer.store'
 import {
   Alert,
@@ -16,7 +16,7 @@ import {
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { AxiosError } from 'axios'
 import dayjs from 'dayjs'
-import union from 'lodash/union'
+import union from 'lodash-es/union'
 import { useMemo, useState } from 'react'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'

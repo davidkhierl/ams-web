@@ -1,7 +1,7 @@
 'use client'
 
-import animationData from '@/lib/lottie-files/spinner.json'
-import { api } from '@/services/api'
+import animationData from '@/assets/lottie-files/spinner.json'
+import { api } from '@/lib/api'
 import { useSessionStore } from '@/store/session.store'
 import { Box, Center, Text } from '@chakra-ui/react'
 import { useQuery } from '@tanstack/react-query'

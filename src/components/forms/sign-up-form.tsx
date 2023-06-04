@@ -1,5 +1,5 @@
 import { FormInput } from '@/components/forms/form-input'
-import { api } from '@/services/api'
+import { api } from '@/lib/api'
 import { useSessionStore } from '@/store/session.store'
 import { Link } from '@chakra-ui/next-js'
 import { Alert, AlertIcon, Box, Button } from '@chakra-ui/react'

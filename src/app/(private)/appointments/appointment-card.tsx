@@ -1,6 +1,6 @@
 'use client'
 
-import DoctorsImage from '@/lib/images/doctors.png'
+import DoctorsImage from '@/assets/images/doctors.png'
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import dayjs from 'dayjs'
 import Image from 'next/image'

@@ -9,7 +9,8 @@ api.interceptors.request.use(
   async (config) => {
     const access_token = useSessionStore.getState().access_token
 
-    config.headers['Authorization'] = `Bearer ${access_token}`
+    config.headers['Authorization'] =
+      config.headers['Authorization'] ?? `Bearer ${access_token}`
     config.headers['Accept'] = 'application/json'
     config.headers['Content-Type'] = 'application/json'
 
@@ -27,7 +28,7 @@ api.interceptors.response.use(
   },
   async function (error) {
     const originalRequest = error.config
-    if (error.response.status === 403 && !originalRequest._retry) {
+    if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true
       const res = await refreshAccessToken()
       useSessionStore.setState({

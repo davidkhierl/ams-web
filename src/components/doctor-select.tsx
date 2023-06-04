@@ -1,4 +1,4 @@
-import { api } from '@/services/api'
+import { api } from '@/lib/api'
 import { Select, SelectProps, Skeleton, forwardRef } from '@chakra-ui/react'
 import { useQuery } from '@tanstack/react-query'
 

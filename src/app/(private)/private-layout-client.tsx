@@ -1,7 +1,7 @@
 'use client'
 
 import { CreateAppointmentDrawer } from '@/components/create-appointment-drawer'
-import { PrivateNavbar } from '@/layout/private-navbar'
+import { AppBarPrivate } from '@/layout/app-bar-private'
 import { Container } from '@chakra-ui/react'
 import { ReactNode } from 'react'
 
@@ -12,7 +12,7 @@ export interface PublicLayoutClientProps {
 export function PrivateLayoutClient({ children }: PublicLayoutClientProps) {
   return (
     <>
-      <PrivateNavbar />
+      <AppBarPrivate />
       <Container maxW="container.xl" mt={10}>
         {children}
       </Container>
